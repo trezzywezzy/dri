@@ -1,7 +1,7 @@
 pcall(function()
     queue_on_teleport([[
         task.wait(5)
-        loadstring(game:HttpGet("YOUR_LOADER_URL"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/trezzywezzy/dri/refs/heads/main/loader.lua"))()
     ]])
 end)
 
