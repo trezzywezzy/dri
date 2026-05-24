@@ -1,30 +1,3 @@
-pcall(function()
-    queue_on_teleport([[
-        task.wait(5)
-        local src = readfile("autoexec/Script1.lua") or readfile("autoexec\\Script1.lua") or readfile("Script1.lua")
-        if src then
-            loadstring(src)()
-        else
-            print("readfile failed - could not find Script1.lua")
-        end
-    ]])
-end)
--- Auto-rejoin on disconnect (retries every 10 seconds)
-task.spawn(function()
-    game:GetService("CoreGui")
-        :WaitForChild("RobloxPromptGui")
-        :WaitForChild("promptOverlay")
-        :WaitForChild("ErrorPrompt")
-
-    task.wait(2)
-    while true do
-        pcall(function()
-            game:GetService("TeleportService"):Teleport(game.PlaceId)
-        end)
-        print("Reconnect attempt, retrying in 10s...")
-        task.wait(10)
-    end
-end)
 local iyLoaded = false
 local hooked = false
 local function runScript()
@@ -1318,7 +1291,7 @@ local function startAntiAFK()
 			end)
 			print("Anti-AFK: input simulated")
 
-			for i = 1, 600 do
+			for i = 1, 60 do
 				if not State.AntiAFK then break end
 				task.wait(1)
 			end
